@@ -36,21 +36,33 @@ def find_min_max(float_list):
 
 def sort_temperature(inputlist):
     print("sort_temperature")
+    inputlist.sort()
+    print("Sorted = ", inputlist)
+    return inputlist
 
 
-def calc_median_temperature(inputlist):
+def calc_median_temperature(sortedlist):
     print("calc_median_temperature")
+    cnt = len(sortedlist)
+    print("cnt=", cnt)
+    if cnt%2 == 1:  # No. of elements i list is odd.
+        median = sortedlist[cnt//2]   # // is Integer Division
+    else:
+        median = (sortedlist[cnt//2 - 1] + sortedlist[cnt//2])/2
+    print("Median = ", median)
+
 
 
 def main():
     print("ET0735 (DevOps for AIoT) - Lab 2 - Introduction to Python")
     display_main_menu()
     num_list = get_user_input()
-    print("INPUT = ", num_list)
+    print(num_list)
     average = calc_average(num_list)
     min_max_list = find_min_max(num_list)
     print(min_max_list)
-
+    sorted_list = sort_temperature(num_list)
+    calc_median_temperature(sorted_list)
 
 
 if __name__ == "__main__":
